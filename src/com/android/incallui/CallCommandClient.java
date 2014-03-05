@@ -298,18 +298,6 @@ public class CallCommandClient {
         }
     }
 
-    public void blacklistAndHangup(int callId) {
-        if (mCommandService == null) {
-            Log.e(this, "Cannot blacklistAndHangup(); CallCommandService == null");
-            return;
-        }
-        try {
-            mCommandService.blacklistAndHangup(callId);
-        } catch (RemoteException e) {
-            Log.e(this, "Error on blacklistAndHangup().", e);
-        }
-    }
-
     public void setActiveSubscription(int subscriptionId) {
         Log.i(this, "set active sub = " + subscriptionId);
         if (mCommandService == null) {

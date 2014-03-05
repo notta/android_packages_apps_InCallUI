@@ -36,7 +36,6 @@ import android.widget.PopupMenu.OnDismissListener;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.ToggleButton;
 
-import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.services.telephony.common.AudioMode;
 
 /**
@@ -54,7 +53,6 @@ public class CallButtonFragment
     private ImageButton mMergeButton;
     private ImageButton mAddCallButton;
     private ImageButton mSwapButton;
-    private ImageButton mBlacklistButton;
     private ImageButton mAddParticipantButton;
 
     private PopupMenu mAudioModePopup;
@@ -154,15 +152,6 @@ public class CallButtonFragment
         mAddParticipantButton = (ImageButton) parent.findViewById(R.id.addParticipant);
         mAddParticipantButton.setOnClickListener(this);
 
-        // "Add to black list" button
-        mBlacklistButton = (ImageButton) parent.findViewById(R.id.addBlacklistButton);
-        if (BlacklistUtils.isBlacklistEnabled(getActivity())) {
-            mBlacklistButton.setVisibility(View.VISIBLE);
-            mBlacklistButton.setOnClickListener(this);
-        } else {
-            mBlacklistButton.setVisibility(View.GONE);
-        }
-
         mModifyCallButton = (Button) parent.findViewById(R.id.modifyCallButton);
         mModifyCallButton.setOnClickListener(this);
 
@@ -207,9 +196,6 @@ public class CallButtonFragment
             case R.id.dialpadButton:
                 getPresenter().showDialpadClicked(mShowDialpadButton.isChecked());
                 break;
-            case R.id.addBlacklistButton:
-                getPresenter().blacklistClicked(getActivity());
-                break;
             case R.id.addParticipant:
                 getPresenter().addParticipantClicked();
                 break;
@@ -237,7 +223,6 @@ public class CallButtonFragment
         mMergeButton.setEnabled(isEnabled);
         mAddCallButton.setEnabled(isEnabled);
         mSwapButton.setEnabled(isEnabled);
-        mBlacklistButton.setEnabled(isEnabled);
         mAddParticipantButton.setEnabled(isEnabled);
     }
 
