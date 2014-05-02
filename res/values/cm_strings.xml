@@ -23,4 +23,8 @@
 
     <!-- In-call screen: status label for a call that is held remotely  -->
     <string name="card_title_waiting_call">Waiting call</string>
+
+    <!-- CallCardFragement operator names -->
+    <string name="sub_no_sim">No SIM</string>
+    <string name="multi_sim_entry_format" translatable="false"><xliff:g id="operator">%1$s</xliff:g>-<xliff:g id="index">%2$d</xliff:g></string>
 </resources>
